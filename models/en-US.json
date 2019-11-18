@@ -1,0 +1,161 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "database editor",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AddToDatabaseIntent",
+                    "slots": [
+                        {
+                            "name": "Id",
+                            "type": "AMAZON.NUMBER",
+                            "samples": [
+                                "{Id}",
+                                "the id is {Id}"
+                            ]
+                        },
+                        {
+                            "name": "Name",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{Name}",
+                                "the name is {Name}"
+                            ]
+                        },
+                        {
+                            "name": "Description",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{Description}",
+                                "the description is {Description}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "I want to add",
+                        "I want to add to the database"
+                    ]
+                },
+                {
+                    "name": "SearchIntent",
+                    "slots": [
+                        {
+                            "name": "Id",
+                            "type": "AMAZON.NUMBER"
+                        },
+                        {
+                            "name": "Name",
+                            "type": "AMAZON.SearchQuery"
+                        }
+                    ],
+                    "samples": [
+                        "Search for {Name}",
+                        "Search for {Id}",
+                        "Search"
+                    ]
+                }
+            ],
+            "types": []
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "AddToDatabaseIntent",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.1261273989429"
+                    },
+                    "slots": [
+                        {
+                            "name": "Id",
+                            "type": "AMAZON.NUMBER",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1261273989429.206162665"
+                            }
+                        },
+                        {
+                            "name": "Name",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1261273989429.1207948275158"
+                            }
+                        },
+                        {
+                            "name": "Description",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1261273989429.680110232068"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Elicit.Slot.1261273989429.206162665",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What is the id"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1261273989429.1207948275158",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What is the item name"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Intent.1261273989429",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Do you want me to add id {Id}, name is {Name}, description is {Description}"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1261273989429.680110232068",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What is the description"
+                    }
+                ]
+            }
+        ]
+    }
+}

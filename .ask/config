@@ -1,0 +1,75 @@
+{
+  "deploy_settings": {
+    "default": {
+      "skill_id": "amzn1.ask.skill.ca3c3b68-9908-44b5-a198-d11ae0a3b176",
+      "was_cloned": false,
+      "merge": {},
+      "resources": {
+        "manifest": {
+          "eTag": "2ca9207f5261463145c9810cbaf998ed"
+        },
+        "interactionModel": {
+          "de-DE": {
+            "eTag": "0fc77e2eb168345f8fc67859b2ee5f97"
+          },
+          "en-AU": {
+            "eTag": "a94af3ac1d4b4b2fef80f5e94115a0bf"
+          },
+          "en-GB": {
+            "eTag": "90910dd9aaa2901ef6e666374f9a5c13"
+          },
+          "en-US": {
+            "eTag": "3cf295a344058dfe3ead3d12f4941bc2"
+          },
+          "en-CA": {
+            "eTag": "822e0e678c8d43b599ca66b18698e7ae"
+          },
+          "es-ES": {
+            "eTag": "8fb5ee966a808a8dd49353b89ac16914"
+          },
+          "es-US": {
+            "eTag": "1ff71131c07cd03dce8d8a4a178a365f"
+          },
+          "hi-IN": {
+            "eTag": "6082110755cac73a33b1f60d606f5ab2"
+          },
+          "en-IN": {
+            "eTag": "850d2b142283e527ed38ab01be83e7a1"
+          },
+          "fr-CA": {
+            "eTag": "cd35a51176b4d1770391af39bc401218"
+          },
+          "it-IT": {
+            "eTag": "130d374aae91312832610d6f06ad13aa"
+          },
+          "pt-BR": {
+            "eTag": "a4ad8979c6d828b047a969814369418d"
+          },
+          "es-MX": {
+            "eTag": "1796f24fbf848a4a359723228f67b52e"
+          },
+          "ja-JP": {
+            "eTag": "eb96d81cdedffb4e19dcef3d1d3b90ef"
+          },
+          "fr-FR": {
+            "eTag": "5922f9750eac82f703b4b176ef760902"
+          }
+        },
+        "lambda": [
+          {
+            "alexaUsage": [
+              "custom/default"
+            ],
+            "arn": "arn:aws:lambda:us-east-1:755871233318:function:ask-custom-worthy-advice-default",
+            "awsRegion": "us-east-1",
+            "codeUri": "lambda/custom",
+            "functionName": "ask-custom-worthy-advice-default",
+            "handler": "index.handler",
+            "revisionId": "70485f79-f095-4f9f-8870-0c4474714499",
+            "runtime": "nodejs8.10"
+          }
+        ]
+      }
+    }
+  }
+}
