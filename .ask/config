@@ -19,7 +19,7 @@
             "eTag": "90910dd9aaa2901ef6e666374f9a5c13"
           },
           "en-US": {
-            "eTag": "3cf295a344058dfe3ead3d12f4941bc2"
+            "eTag": "4be4c2e3aca9391f7a6ec545461f3f23"
           },
           "en-CA": {
             "eTag": "822e0e678c8d43b599ca66b18698e7ae"
@@ -65,7 +65,7 @@
             "codeUri": "lambda/custom",
             "functionName": "ask-custom-worthy-advice-default",
             "handler": "index.handler",
-            "revisionId": "70485f79-f095-4f9f-8870-0c4474714499",
+            "revisionId": "8a9d057c-3776-4bc7-9ead-35800300c26a",
             "runtime": "nodejs8.10"
           }
         ]

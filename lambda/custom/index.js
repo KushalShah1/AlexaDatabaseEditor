@@ -14,6 +14,7 @@ const mysql = require("mysql");
 const connection = mysql.createConnection({
     //nothing here to keep privacy
 });
+const dbEdit=require('./modules/databaseManager.js');
 
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
@@ -35,22 +36,24 @@ const AddToDatabaseIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AddToDatabaseIntent';
     },
-    handle(handlerInput) {
-        let id= handlerInput.requestEnvelope.request.intent.slots.Id.value;
-        let name= handlerInput.requestEnvelope.request.intent.slots.Name.value;
-        let description=handlerInput.requestEnvelope.request.intent.slots.Description.value;
+    async handle(handlerInput) {
+        let id = handlerInput.requestEnvelope.request.intent.slots.Id.value;
+        let name = handlerInput.requestEnvelope.request.intent.slots.Name.value;
+        let description = handlerInput.requestEnvelope.request.intent.slots.Description.value;
+        let sql = "INSERT INTO Item VALUES ('" + id + "','" + name + "','" + description + "')";
 
-        let sql="INSERT INTO Item VALUES ('${id}', '${name}', '${description}')";
-        let speakOutput='Add was '
-        connection.query(sql, function (err, result) {
-            if (err) throw err;
-            speakOutput+=result;
-          });
-
+        let speakOutput='Hello';
+        await dbEdit.addToDb(sql)
+            .then(value => {
+                speakOutput=value;
+            })
+            .catch(err => {
+                speakOutput=err;
+            });
         return handlerInput.responseBuilder
-            .speak(speakOutput)
-            .withShouldEndSession(false)
-            .getResponse();
+                    .speak(speakOutput)
+                    .withShouldEndSession(false)
+                    .getResponse();
     }
 };
 const SearchIntentHandler = {
@@ -188,6 +191,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         AddToDatabaseIntentHandler,
+        SearchIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
