@@ -65,7 +65,7 @@
             "codeUri": "lambda/custom",
             "functionName": "ask-custom-worthy-advice-default",
             "handler": "index.handler",
-            "revisionId": "435e6c76-bb48-42e3-a4af-c3616a32b275",
+            "revisionId": "3ac1b92f-dfff-4a44-82ba-f34bf4c71524",
             "runtime": "nodejs8.10"
           }
         ]
