@@ -37,7 +37,25 @@ function addToDb(sql) {
         //con.end();
         console.log(err)
     });*/
-
-    module.exports.addToDb=addToDb;
+function searchDb(sql) {
+    return new Promise((resolve, reject) =>
+        con.query(sql, function (err, result) {
+            if (err) {
+                reject("There was an error searching" + err);
+            }
+            else {
+                var stringResults = [];
+                let num = 0;
+                Object.keys(result).forEach(function (key) {
+                    var row = result[key];
+                    num++;
+                    stringResults.push("Result Number " + num + ", id is: " + row.Id + ", Name is: " + row.Name + ", Description is: " + row.Description + ", ");
+                })
+                resolve(stringResults);
+            }
+        }))
+}
+module.exports.addToDb = addToDb;
+module.exports.searchDb = searchDb;
 
 return 0;

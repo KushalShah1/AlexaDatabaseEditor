@@ -42,7 +42,7 @@ const AddToDatabaseIntentHandler = {
         let description = handlerInput.requestEnvelope.request.intent.slots.Description.value;
         let sql = "INSERT INTO Item VALUES ('" + id + "','" + name + "','" + description + "')";
 
-        let speakOutput='Hello';
+        let speakOutput='Error';
         await dbEdit.addToDb(sql)
             .then(value => {
                 speakOutput=value;
@@ -61,9 +61,30 @@ const SearchIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'SearchIntent';
     },
-    handle(handlerInput) {
+    async handle(handlerInput) {
+
+        let name= handlerInput.requestEnvelope.request.intent.slots.Name.value;
+        let id= handlerInput.requestEnvelope.request.intent.slots.Id.value;
+        let sql="SELECT * FROM test.Item WHERE ";
+        if(name!=null){
+            sql+="Name='"+name+"'";
+        }
+        else{
+            sql+="Id="+id;
+        }
+        let speakOutput="";
+        await dbEdit.searchDb(sql)
+            .then(value => {
+                value.forEach(element => {
+                    speakOutput+=element;
+                });
+            })
+            .catch(err => {
+                speakOutput=err;
+            });
+
         return handlerInput.responseBuilder
-            .speak("search worked")
+            .speak(speakOutput)
             .withShouldEndSession(false)
             .getResponse();
     }

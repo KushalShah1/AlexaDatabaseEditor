@@ -1,15 +1,5 @@
 
-var mysql = require('mysql');
-var db = require('./modules/configDatabase.json')
-
-var con = mysql.createConnection({
-    host: db.host,
-    port: db.port,
-    user: db.user,
-    password: db.password
-});
-
-var dbEdit=require('./modules/databaseManager.js');
+var dbEdit = require('./modules/databaseManager.js');
 
 let sql = "INSERT INTO Item VALUES ('4','test','test from test.js')";
 function addToDbw(sql) {
@@ -48,7 +38,7 @@ con.query("Select * Item;", function (err, result) {
     speakOutput += result;
     console.log(speakOutput);
 });
-*/
+
 dbEdit.addToDb(sql)
             .then(value => {
                 console.log(value);
@@ -56,4 +46,17 @@ dbEdit.addToDb(sql)
             .catch(err => {
                 console.log(err);
             });
+            */
+
+dbEdit.searchDb("Select * from test.Item where Name='test'")
+    .then(value => {
+        value.forEach(element => {
+            console.log(element);
+        });
+    })
+    .catch(err => {
+        console.log(err);
+    });
+    
+
 return 0;
